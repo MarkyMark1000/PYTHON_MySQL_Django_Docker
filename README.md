@@ -6,11 +6,13 @@ database on my local computer.
 It must be able to connect when run on the local computer and it also needs to
 be able to connect when using a Dockerfile.
 
-Currently I can get it to connect when run on my local computer (mac), but I
-cannot get the Dockerfile connection to work.   I would very much appreciate
-some help.
+Originally, I found it easy to get it to connect when run on my local computer (mac), but when I tried to connect to MySQL through a Dockerfile, it did not work.   I have tried installing mysqlclient onto the docker image and I have tried using python mysql connector, but I cannot get either of them to work.   Unfortunately the examples and instructions that I have found so far are very  limited.
 
-The details of my system are specified below.
+The actual Django site doesn't really display anything.   It does however run the migrations and create the auth and django tables in the MySQL database (this doesn't work when run from the Dockerfile).
+
+I try to connect to the MySQL database on my local machine using the following adjustment in the settings.py file:
+
+> 'HOST': 'host.docker.internal',
 
 ### MySQL Setup
 
@@ -60,8 +62,6 @@ I have created a makefile to help clean things up, create a virtual environment 
 * make run-local              - This runs the Django project on my localhost.
 * make run-dock               - This builds and runs the Django project within a container defined by the local Dockerfile.
 
-The majority of the commands work except for 'run-dock'.   I cannot get it to work with the Dockerfile.
-
 ### SYSTEM AND TYPICAL ERRORS
 
 ---
@@ -69,6 +69,7 @@ The majority of the commands work except for 'run-dock'.   I cannot get it to wo
 I am running this code on a Macbook Pro with macOS Catalina Version 10.15.7 and there is
 a MySQL 5.7.29 database installed.
 
-This shows the typical error that I get when running the Dockerfile version of this project:
+This image should display a typical error that I get:
 
-![Typical Error](./img/TypicalError.png)
+![Typical Errors](./img/TypicalError.png)
+

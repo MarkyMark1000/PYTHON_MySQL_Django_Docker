@@ -5,7 +5,7 @@ FROM python:3.8-alpine
 ENV PYTHONUNBUFFERED 1
 
 # Echo the Environment variables to help with debugging
-RUN echo *** $DJANGO_DEBUG *** $DB_HOST ***
+RUN echo *** $DJANGO_DEBUG *** $MY_ENV ***
 
 EXPOSE 8080
 

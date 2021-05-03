@@ -29,7 +29,6 @@ clean:
 	@echo ""
 	(rm -rf venv; rm -rf *.pyc; find . -type d -name  "__pycache__" -exec rm -r {} +; )
 	(rm -rf htmlcov; rm -rf .coverag*;)
-	(rm -rf .elasticbeanstalk; rm -rf .dockerignore; rm -rf .gitignore;)
 	(rm -rf d*.sqlit*; )
 	@echo ""
 
@@ -62,5 +61,5 @@ run-dock:
 	@echo "  (don't forget to clean up images/containers)"
 	@echo ""
 	@echo ""
-	( docker build -t mjw/mysqlsite .; docker run -e DJANGO_DEBUG='False' -e DB_HOST=docker.for.mac.host.internal -p 8080:8080 mjw/mysqlsite; )
+	( docker build -t mjw/mysqlsite .; docker run -e DJANGO_DEBUG='False' -e MY_ENV='Docker' -p 8080:8080 mjw/mysqlsite; )
 	@echo ""
